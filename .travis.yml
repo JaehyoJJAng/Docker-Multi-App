@@ -12,16 +12,12 @@ script:
   - docker run -e CI=true yshrim12/react-test-app npm test
 
 after_success:
-  - docker build --tag yshrim12/docker-frontend ./frontend
-  - docker build --tag yshrim12/docker-backend  ./backend
-  - docker build --tag yshrim12/nginx  ./nginx
-  
-  - echo "print docker images"
-  - docker images
+  - docker build --tag yshrim12/docker-frontend:latest -f ./frontend/Dockerfile.prod ./frontend
+  - docker build --tag yshrim12/docker-backend:latest  -f ./backend/Dockerfile.prod ./backend
+  - docker build --tag yshrim12/nginx:latest  ./nginx
 
   - echo "${DOCKER_HUB_PASSWORD}" | docker login -u "${DOCKER_HUB_ID}" --password-stdin
 
   - docker push yshrim12/docker-frontend
   - docker push yshrim12/docker-backend
   - docker push yshrim12/nginx
-
