@@ -15,6 +15,9 @@ after_success:
   - docker build --tag yshrim12/docker-frontend ./frontend
   - docker build --tag yshrim12/docker-backend  ./backend
   - docker build --tag yshrim12/nginx  ./nginx
+  
+  - echo "print docker images"
+  - docker images
 
   - echo "${DOCKER_HUB_PASSWORD}" | docker login -u "${DOCKER_HUB_ID}" --password-stdin
 
