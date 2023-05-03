@@ -13,6 +13,8 @@ services:
     stdin_open: true
     tty: true
     container_name: frontend
+    networks:
+      - react-network 
 
   nginx:
     restart: always
@@ -22,6 +24,8 @@ services:
     ports:
       - "80:80"
     container_name: nginx
+    networks:
+      - react-network 
 
   backend:
     depends_on:
@@ -35,6 +39,8 @@ services:
     env_file:
       - "env/backend.env"
     container_name: backend
+    networks:
+      - react-network 
 
   mysql:
     build: ./mysql
@@ -45,9 +51,11 @@ services:
     env_file:
       - "env/mysql.env"
     container_name: mysql
+    networks:
+      - react-network
     
 networks:
-  reacet-network:
+  react-network:
     name: react-net
     external: true
 
