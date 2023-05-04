@@ -14,6 +14,9 @@ services:
     container_name: frontend
 
   nginx:
+    depends_on:
+      - "backend"
+      - "frontend"
     image: yshrim12/nginx # 도커허브에 저장된 이미지
     restart: always
     ports:
@@ -26,8 +29,6 @@ services:
 
   backend:
     image: yshrim12/docker-backend # 도커허브에 저장된 이미지
-    depends_on:
-      - "mysql"
     volumes:
       - "/app/node_modules"
       - "./backend:/app"
