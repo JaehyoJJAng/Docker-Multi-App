@@ -17,7 +17,7 @@ services:
     depends_on:
       - "backend"
       - "frontend"
-    image: yshrim12/nginx # 도커허브에 저장된 이미지
+    image: yshrim12/docker-nginx # 도커허브에 저장된 이미지
     restart: always
     ports:
       - "80:80"
