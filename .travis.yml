@@ -26,7 +26,8 @@ after_success:
   # 이미지 도커허브로 푸시
   - docker push yshrim12/docker-frontend
   - docker push yshrim12/docker-backend
-  - docker push yshrim12/nginx
+  - docker push yshrim12/docker-nginx
+  - docker push yshrim12/docker-mysql
 
 # 배포 코드
 deploy:
