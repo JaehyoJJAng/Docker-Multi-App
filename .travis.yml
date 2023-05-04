@@ -30,6 +30,7 @@ after_success:
 
 # 배포 코드
 deploy:
+  edge: true
   provider: elasticbeanstalk
   region: "ap-northeast-2"
   app: "aws-eb"
